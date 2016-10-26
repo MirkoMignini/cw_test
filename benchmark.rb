@@ -1,7 +1,7 @@
 require 'benchmark/ips'
 
-# Benchmark to understand if is better to use a single array
-# or an array of arrays to store bitmap pixels
+# Benchmark to understand if is better to use a single array
+# or an array of arrays to store bitmap pixels
 # Results:
 #         Array[Array]:    39186.9 i/s
 #              Array[]:    33663.8 i/s - 1.16x  slower
