@@ -6,3 +6,4 @@ gem 'rspec'
 gem 'rubocop'
 gem 'benchmark-ips'
 gem 'fasterer'
+gem 'simplecov', require: false
