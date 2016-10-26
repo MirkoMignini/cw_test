@@ -6,7 +6,7 @@ module Commands
     help 'Show the contents of the current image.'
 
     def process
-      puts console.bitmap.show
+      console.bitmap.show
     end
   end
 end

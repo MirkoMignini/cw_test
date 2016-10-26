@@ -6,7 +6,7 @@ class BitmapEditor < Console
   attr_writer :bitmap
 
   def bitmap
-    raise StandardError, 'It is necessary to initialize a bitmap before' if @bitmap.nil?
+    raise ArgumentError, 'It is necessary to initialize a bitmap before' if @bitmap.nil?
     @bitmap
   end
 end

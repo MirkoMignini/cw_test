@@ -8,6 +8,7 @@ module Commands
 
     def process
       console.bitmap.horizontal_segment(params[:x1], params[:x2], params[:y], params[:c])
+      nil
     end
   end
 end

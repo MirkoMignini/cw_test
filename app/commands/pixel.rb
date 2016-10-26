@@ -8,6 +8,7 @@ module Commands
 
     def process
       console.bitmap[params[:x], params[:y]] = params[:c]
+      nil
     end
   end
 end

@@ -8,6 +8,7 @@ module Commands
 
     def process
       console.bitmap.vertical_segment(params[:x], params[:y1], params[:y2], params[:c])
+      nil
     end
   end
 end
