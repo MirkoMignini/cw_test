@@ -9,9 +9,14 @@ RSpec.describe Bitmap do
       expect(pixels).to eq('OOOOOOOOO')
     end
 
-    it 'draws a pixel' do
+    it 'set a pixel' do
       bitmap[1, 2] = 'C'
       expect(pixels).to eq('OOOCOOOOO')
+    end
+
+    it 'get a pixel' do
+      bitmap[1, 2] = 'C'
+      expect(bitmap[1, 2]).to eq('C')
     end
 
     it 'draws an horizontal line' do
@@ -21,13 +26,17 @@ RSpec.describe Bitmap do
 
     it 'draws a vertical line' do
       bitmap.vertical_segment(1, 2, 3, 'C')
-      expect(pixels).to eq('OOCOOCOOO')
+      expect(pixels).to eq('OOOCOOCOO')
     end
 
     it 'clears the pixels' do
       bitmap.vertical_segment(1, 2, 3, 'C')
       bitmap.clear
       expect(pixels).to eq('OOOOOOOOO')
+    end
+
+    it 'returns the pixels in pretty format' do
+      expect(bitmap.show).to eq("OOO\nOOO\nOOO")
     end
   end
 end
