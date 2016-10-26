@@ -1,4 +1,4 @@
-require './app/console'
+require './app/bitmap_editor'
 
-console = Console.new
+console = BitmapEditor.new
 console.run

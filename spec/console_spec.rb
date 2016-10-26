@@ -1,7 +1,7 @@
-require 'dummy/dummy_console'
+require_relative '../app/bitmap_editor'
 
 RSpec.describe Console do
-  let(:console) { DummyConsole.new }
+  let(:console) { BitmapEditor.new }
 
   it 'initialize without errors' do
     expect { console }.not_to raise_error
@@ -13,7 +13,7 @@ RSpec.describe Console do
 
   context 'process input' do
     it 'process an existing command' do
-      expect(console.process_input('D')).to eq('works')
+      expect(console.process_input('I 3 2')).not_to eq(nil)
     end
 
     it 'returns an error message for not existing commands' do

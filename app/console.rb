@@ -14,10 +14,12 @@ class Console
     while @running
       print '> '
       output = process_input(gets.chomp)
-      puts output unless output.nil? || output.strip == ''
+      # if the output from command is a non empty string let's print
+      puts output unless output.nil? || !output.is_a?(String) || output.strip == ''
     end
   end
 
+  # set the console as stop running
   def stop
     @running = false
   end
