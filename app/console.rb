@@ -7,16 +7,66 @@ class Console
     load_commands
   end
 
-  private
+  # run the console
+  def run
+    @running = true
+    puts welcome_message
+    while @running
+      print '> '
+      output = process_input(gets.chomp)
+      puts output unless output.nil? || output.strip == ''
+    end
+  end
+
+  def stop
+    @running = false
+  end
+
+  # Process the input, find the matching command and execute
+  def process_input(input)
+    command = match_command(input)
+    begin
+      return command ? execute_command(command, input) : unknown_command_message
+    rescue ArgumentError => error
+      error.to_s
+    end
+  end
+
+  protected
+
+  # default unknown message
+  def unknown_command_message
+    'unrecognised command :('
+  end
+
+  # default welcome message
+  def welcome_message
+    'type ? for help'
+  end
 
   # default commands path
   def command_files
     Dir[File.expand_path('commands/**/*.rb', __dir__)]
   end
 
+  private
+
   # load commands files
   def load_commands
     command_files.each { |file| load(file) }
     @commands = Commands.constants.map(&Commands.method(:const_get)).grep(Class)
+  end
+
+  # match an input to find the matching command
+  def match_command(input)
+    @commands.each do |command|
+      return command if command.match?(input[0])
+    end
+    nil
+  end
+
+  # Execute a command creating a new instance
+  def execute_command(command, input)
+    command.new(self, input).process
   end
 end

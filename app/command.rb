@@ -5,14 +5,17 @@ class Command
   class << self
     attr_reader :command_text, :help_text
 
+    # DSL function to set input command
     def command(command_text)
       @command_text = command_text
     end
 
+    # DSL function to set text help
     def help(help_text)
       @help_text = help_text
     end
 
+    # Match input with command, case insensitive
     def match?(input)
       input.casecmp(command_text).zero?
     end
