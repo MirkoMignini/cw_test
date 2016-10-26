@@ -13,7 +13,7 @@ RSpec.describe Command do
     expect { command.process }.to raise_error(NotImplementedError)
   end
 
-  it 'raise no error if dummy command process is called' do
+  it 'raise no error if real command process is called' do
     expect { create_command.process }.not_to raise_error
   end
 
