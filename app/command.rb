@@ -2,6 +2,22 @@
 class Command
   attr_reader :console, :params
 
+  class << self
+    attr_reader :command_text, :help_text
+
+    def command(command_text)
+      @command_text = command_text
+    end
+
+    def help(help_text)
+      @help_text = help_text
+    end
+
+    def match?(input)
+      input.casecmp(command_text).zero?
+    end
+  end
+
   # initialize a command,
   # save parent console and process user input parameters
   def initialize(console, input)

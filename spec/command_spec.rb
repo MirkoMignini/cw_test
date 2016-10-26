@@ -11,4 +11,10 @@ RSpec.describe Command do
   it 'raise an error if process is called' do
     expect { command.process }.to raise_error(NotImplementedError)
   end
+
+  context 'Command DSL' do
+    it 'responds to dsl methods' do
+      expect(Command).to respond_to(:help, :command)
+    end
+  end
 end
