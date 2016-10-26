@@ -27,7 +27,7 @@ RSpec.describe Command do
     end
 
     it 'contains the right help text' do
-      expect(create_command_class.help_text).to eq('Create a new M x N image with all pixels coloured white (O).')
+      expect(create_command_class.help_text).to start_with('Create a new M x N')
     end
 
     it 'contains the right command params' do

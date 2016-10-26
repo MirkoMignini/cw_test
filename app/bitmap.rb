@@ -8,8 +8,10 @@ class Bitmap
 
   # initialize to a specific width * height and clear to a default color
   def initialize(width, height)
-    raise ArgumentError, "Width not between 1 and #{MAX_WIDTH}" if width > MAX_WIDTH || width < 1
-    raise ArgumentError, "Height not between 1 and #{MAX_HEIGHT}" if height > MAX_HEIGHT || height < 1
+    # default width and height are set to max to use the validations functions
+    @width = MAX_WIDTH
+    @height = MAX_HEIGHT
+    validate_x_y_coords(width, height)
     @width = width
     @height = height
     clear
@@ -54,7 +56,7 @@ class Bitmap
   private
 
   # creates dinamically two methods to validate
-  # one or more coordinates along x or y axis
+  # one or more coordinates along x or y axis
   %w(x y).each do |method|
     define_method("validate_#{method}_coords") do |*coords|
       coords.each do |val|
@@ -64,7 +66,7 @@ class Bitmap
     end
   end
 
-  # helpers to check x, y coord in one line
+  # helper to check x, y coord in one line
   def validate_x_y_coords(x, y)
     validate_x_coords(x)
     validate_y_coords(y)
